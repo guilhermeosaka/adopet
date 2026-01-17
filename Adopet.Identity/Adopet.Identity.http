@@ -1,0 +1,6 @@
+@Adopet.Identity_HostAddress = http://localhost:5026
+
+GET {{Adopet.Identity_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

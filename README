@@ -1,0 +1,5 @@
+﻿- docker
+- dotnet tool install --global dotnet-ef
+- docker compose up -d 
+- dotnet ef migrations add InitialIdentity
+- dotnet ef database update
