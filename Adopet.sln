@@ -1,11 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Adopet.Identity", "Adopet.Identity\Adopet.Identity.csproj", "{0DF4C3FB-B07B-4DF1-ADEB-2A32D5112112}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Adopet.Identity", "src\Adopet.Identity\Adopet.Identity.csproj", "{0DF4C3FB-B07B-4DF1-ADEB-2A32D5112112}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3FEBECAF-EFB1-45F6-878A-42A3ABA88DA7}"
 	ProjectSection(SolutionItems) = preProject
 		docker-compose.yml = docker-compose.yml
 	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{714FABA9-8BAD-4AFD-A977-EFE3A3420448}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{B8A0978F-C5F7-485F-B020-25E9AB94D0E1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Adopet.Identity.Tests", "tests\Adopet.Identity.Tests\Adopet.Identity.Tests.csproj", "{484EBFAD-73FF-49BB-A45F-B476FCFB243D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,5 +23,13 @@ Global
 		{0DF4C3FB-B07B-4DF1-ADEB-2A32D5112112}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0DF4C3FB-B07B-4DF1-ADEB-2A32D5112112}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0DF4C3FB-B07B-4DF1-ADEB-2A32D5112112}.Release|Any CPU.Build.0 = Release|Any CPU
+		{484EBFAD-73FF-49BB-A45F-B476FCFB243D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{484EBFAD-73FF-49BB-A45F-B476FCFB243D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{484EBFAD-73FF-49BB-A45F-B476FCFB243D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{484EBFAD-73FF-49BB-A45F-B476FCFB243D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0DF4C3FB-B07B-4DF1-ADEB-2A32D5112112} = {714FABA9-8BAD-4AFD-A977-EFE3A3420448}
+		{484EBFAD-73FF-49BB-A45F-B476FCFB243D} = {B8A0978F-C5F7-485F-B020-25E9AB94D0E1}
 	EndGlobalSection
 EndGlobal
