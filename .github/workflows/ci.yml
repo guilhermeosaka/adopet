@@ -76,12 +76,12 @@ jobs:
           -c Release \
           -o out/${{ matrix.service.name }}
 
-          - name: Upload artifact
-            if: steps.changes.outputs.CHANGED == 'true'
-            uses: actions/upload-artifact@v4
-            with:
-              name: ${{ matrix.service.artifact }}
-              path: out/${{ matrix.service.name }}
+      - name: Upload artifact
+        if: steps.changes.outputs.CHANGED == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.service.artifact }}
+          path: out/${{ matrix.service.name }}
         
       - name: Setup Docker Buildx
         if: steps.changes.outputs.CHANGED == 'true'
