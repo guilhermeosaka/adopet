@@ -1,14 +1,25 @@
-using Adopet.Identity.Extensions;
+using Adopet.Api.Options;
+using Adopet.Application.Services;
+using Adopet.Domain.Interfaces;
+using Adopet.Extensions;
+using Adopet.Infrastructure.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
+builder.Services.Configure<JwtOptions>(builder.Configuration.GetSection(JwtOptions.Path));
+builder.Services.Configure<RefreshTokenOptions>(builder.Configuration.GetSection(RefreshTokenOptions.Path));
+
+var jwtOptions = builder.Configuration.GetSection(JwtOptions.Path).Get<JwtOptions>()!;
 
 builder.Services
     .AddEndpointsApiExplorer()
     .AddSwaggerGen()
-    .AddAuthorization()
-    .AddDb(builder.Configuration.GetConnectionString("IdentityDb"));
+    .AddDb(builder.Configuration.GetConnectionString("IdentityDb"))
+    .AddScoped<IRefreshTokenRepository, RefreshTokenRepository>()
+    .AddTransient<JwtGenerator>()
+    .AddAuthentication(jwtOptions)
+    .AddAuthorization();
 
 var app = builder.Build();
 

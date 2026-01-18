@@ -1,19 +1,52 @@
-﻿using Adopet.Identity.Persistence;
+﻿using System.Text;
+using Adopet.Api.Options;
+using Adopet.Domain.Models;
+using Adopet.Infrastructure;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 
-namespace Adopet.Identity.Extensions;
+namespace Adopet.Extensions;
 
 public static class ServiceCollectionExtensions
 {
-    public static IServiceCollection AddDb(this IServiceCollection services, string? connectionString)
+    extension(IServiceCollection services)
     {
-        services
-            .AddDbContext<IdentityDbContext>(options => options.UseNpgsql(connectionString))
-            .AddIdentity<IdentityUser<Guid>, IdentityRole<Guid>>(options => options.User.RequireUniqueEmail = true)
-            .AddEntityFrameworkStores<IdentityDbContext>()
-            .AddDefaultTokenProviders();
+        public IServiceCollection AddDb(string? connectionString)
+        {
+            services
+                .AddDbContext<IdentityDbContext>(options => options.UseNpgsql(connectionString))
+                .AddIdentity<ApplicationUser, IdentityRole<Guid>>(options => options.User.RequireUniqueEmail = true)
+                .AddEntityFrameworkStores<IdentityDbContext>()
+                .AddDefaultTokenProviders();
 
-        return services;
+            return services;
+        }
+
+        public IServiceCollection AddAuthentication(JwtOptions jwtOptions)
+        {
+            services
+                .AddAuthentication(options =>
+                {
+                    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                })
+                .AddJwtBearer(options =>
+                {
+                    options.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuer = true,
+                        ValidateAudience = true,
+                        ValidateLifetime = true,
+                        ValidateIssuerSigningKey = true,
+                        ValidIssuer = jwtOptions.Issuer,
+                        ValidAudiences = jwtOptions.Audiences,
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtOptions.Key))
+                    };
+                });
+
+            return services;
+        }
     }
 }

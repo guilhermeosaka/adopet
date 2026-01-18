@@ -1,6 +1,29 @@
-@Adopet.Identity_HostAddress = http://localhost:5026
+POST {{Adopet.Identity.HostAddress}}/auth/register
+Content-Type: application/json
 
-GET {{Adopet.Identity_HostAddress}}/weatherforecast/
-Accept: application/json
+{
+  "email": "admin@adopet.com",
+  "password": "DrinkWater#123"
+}
+
+###
+
+POST {{Adopet.Identity.HostAddress}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "admin@adopet.com",
+  "password": "DrinkWater#123"
+}
+
+###
+
+POST {{Adopet.Identity.HostAddress}}/auth/refresh
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwODY3MjAyYS1lNDhhLTRjMjYtODc2YS05M2UzYjIzM2NhZWYiLCJlbWFpbCI6ImFkbWluQGFkb3BldC5jb20iLCJleHAiOjE3Njg3MTI1MzYsImlzcyI6ImFkb3BldC1pZGVudGl0eSIsImF1ZCI6ImFkb3BldC1hcGkifQ.isMiYznaBvwTz62YSWaWoMTV1R41Wg4MOhsI7O3nAaE
+Content-Type: application/json
+
+{
+  "refreshToken": "SFHwFdp86eV/SrX8f+yG7IqMsbim8DSzlipeYIInzw6NKs68mtPOfK0q09SC1/PcpgVTzWs4TfMdJLfVp2rMPA=="
+}
 
 ###
