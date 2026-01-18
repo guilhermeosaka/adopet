@@ -44,9 +44,9 @@ jobs:
           echo "CHANGED=true" >> $GITHUB_OUTPUT
           fi
 
-          - name: Skip unchanged service
-            if: steps.changes.outputs.CHANGED != 'true'
-            run: echo "No changes in ${{ matrix.service.name }} service"
+      - name: Skip unchanged service
+        if: steps.changes.outputs.CHANGED != 'true'
+        run: echo "No changes in ${{ matrix.service.name }} service"
           
       - name: Restore dependencies
         if: steps.changes.outputs.CHANGED == 'true'
