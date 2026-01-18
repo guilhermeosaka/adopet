@@ -43,8 +43,14 @@ jobs:
         run: |
           echo "CHANGED=false" >> $GITHUB_OUTPUT
           
-          if git diff --name-only origin/main...HEAD | grep "^${{ matrix.service.src }}/"; || git diff --name-only HEAD~1...HEAD | grep "^${{ matrix.service.src }}/"; then
-          echo "CHANGED=true" >> $GITHUB_OUTPUT
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            DIFF_RANGE="origin/main...HEAD"
+          else
+            DIFF_RANGE="HEAD~1..HEAD"
+          fi
+          
+          if git diff --name-only $DIFF_RANGE | grep "^${{ matrix.service.src }}/"; then
+            echo "CHANGED=true" >> $GITHUB_OUTPUT
           fi
 
       - name: Skip unchanged service
