@@ -13,6 +13,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{B8A0978F
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Adopet.Identity.Tests", "tests\Adopet.Identity.Tests\Adopet.Identity.Tests.csproj", "{484EBFAD-73FF-49BB-A45F-B476FCFB243D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Adopet.Pet", "src\Adopet.Pet\Adopet.Pet.csproj", "{4B635E10-DDE8-4C72-8F98-0C689F8A067C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,9 +29,14 @@ Global
 		{484EBFAD-73FF-49BB-A45F-B476FCFB243D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{484EBFAD-73FF-49BB-A45F-B476FCFB243D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{484EBFAD-73FF-49BB-A45F-B476FCFB243D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B635E10-DDE8-4C72-8F98-0C689F8A067C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B635E10-DDE8-4C72-8F98-0C689F8A067C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B635E10-DDE8-4C72-8F98-0C689F8A067C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B635E10-DDE8-4C72-8F98-0C689F8A067C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{0DF4C3FB-B07B-4DF1-ADEB-2A32D5112112} = {714FABA9-8BAD-4AFD-A977-EFE3A3420448}
 		{484EBFAD-73FF-49BB-A45F-B476FCFB243D} = {B8A0978F-C5F7-485F-B020-25E9AB94D0E1}
+		{4B635E10-DDE8-4C72-8F98-0C689F8A067C} = {714FABA9-8BAD-4AFD-A977-EFE3A3420448}
 	EndGlobalSection
 EndGlobal
